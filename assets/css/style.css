@@ -6,7 +6,7 @@
 
 #app > div{
     background: rgb(0,150,136);
-    background: linear-gradient(180deg, rgba(0,150,136,1) 0%, rgba(0,150,136,1) 20%, rgba(217,219,211,1) 20%, rgba(217,219,211,1) 100%);
+    background: linear-gradient(180deg, rgba(0,150,136,1) 0%, rgba(0,150,136,1) 15%, rgba(217,219,211,1) 15%, rgba(217,219,211,1) 100%);
 }
 
 #whatsapp{
@@ -26,38 +26,76 @@
 
 #user-info{
     width: 100%;
-    height: 25%;
+    height: 22%;
 }
 
 #user{
     width: 100%;
-    height: 35%;
+    height: 37%;
+    background-color: #EAEAEA;
+}
+
+#user, i{
+    font-size: 1.1em;
 }
 
 #ring{
     width: 100%;
-    height: 40%;
+    height: 36%;
+    background-color: #8EDAFC;
+}
+
+#ring span{
+    font-size: 14px;
 }
 
 #search-chat{
     width: 100%;
-    height: 25%;
+    height: 27%;
+    background-color: #FAFAFA;
+}
+
+#chat-list{
+    background-color: #FFFFFF;
+    height: 78%;
 }
 
 #user-open-chat{
     width: 100%;
-    height: 9%;
+    height: 8%;
+    background-color: #EAEAEA;
 }
 
 #chat{
     width: 100%;
-    height: 82%;
+    height: 84%;
+    background-image: url(../img/mine.jpg);
+    background-repeat: repeat;
 }
 
 #new-message{
     width: 100%;
-    height: 9%;
+    height: 8%;
 }
 
+.round{
+border-radius: 50%;
+display: inline-block;
+text-align: center;
+line-height: 45px;
+height: 45px;
+aspect-ratio: 1;
+}
+
+#ring i{
+    background-color: white;
+    height: 50px;
+    line-height: 50px;
+}
+
+.input-group-text, .form-control{
+    border-radius: 0;
+    color: white;
+}
 
 
