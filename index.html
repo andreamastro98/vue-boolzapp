@@ -62,9 +62,28 @@
 
                     <!-- div chat contenente chat aperta -->
                     <div id="chat-list">
-                        
+
+                        <!-- singola chat -->
+                        <div v-for="(elem, index) in contacts"
+                        :key="index"
+                        class="position-relative d-flex p-2 border-bottom border-light-subtle">
+                            <div class="me-3">
+                                <img :src="elem.avatar" :alt="elem.name" class="round" style="height: 55px;">
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span class="fw-bolder">{{elem.name}}</span>
+                                <span class="grey font-14">Ultimo messaggio inviato</span>
+                            </div>
+                            <div id="time">
+                                <span class="font-11 grey">12:00</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
+
+
 
                 <!-- div chat aperta -->
                 <div id="right-col" class="">
@@ -88,13 +107,40 @@
                     </div>
 
                     <!-- chat con messaggi -->
-                    <div id="chat" class="">
+                    <div id="chat">
+                        <div class="d-flex justify-content-end width-100 mb-2">
+                            <div class="width-35">
+                                <div class="position-relative message-style bg-message-sent d-flex">
+                                    <span>Hai portato a spasso il cane?</span>
+                                    <div>
+                                        <span class="time-chat font-11 grey">15:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="d-flex justify-content-start width-100">
+                            <div class="width-35">
+                                <div class="position-relative message-style bg-message-received d-flex">
+                                    <span>Hai portato a spasso il cane?</span>
+                                    <div>
+                                        <span class="time-chat font-11 grey">15:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
                     </div>
 
                     <!-- barra per scrivere un messaggio -->
-                    <div id="new-message" class="">
-
+                    <div id="new-message">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-face-smile ms-4 me-3 font-25" style="color: #8f8580;"></i></span>
+                            <input type="text" class="form-control m-2" placeholder="Scrivi un messaggio" aria-label="Username" aria-describedby="basic-addon1">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-microphone ms-3 me-4 font-25" style="color: #8f8580;"></i></span>
+                          </div>
                     </div>
                 </div>
             </div>
