@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+* i{
+    cursor: pointer;
+}
+
 #app > div{
     background: rgb(0,150,136);
     background: linear-gradient(180deg, rgba(0,150,136,1) 0%, rgba(0,150,136,1) 15%, rgba(217,219,211,1) 15%, rgba(217,219,211,1) 100%);
@@ -58,6 +62,11 @@
 #chat-list{
     background-color: #FFFFFF;
     height: 78%;
+}
+
+#chat-list > div:hover{
+    background-color: #E9EBEB;
+    cursor: pointer;
 }
 
 #user-open-chat{
@@ -171,5 +180,9 @@ aspect-ratio: 1;
 
 .active{
     background-color: #E9EBEB;
+}
+
+.display-none{
+    display: none;
 }
 

@@ -55,7 +55,11 @@
                         <div id="search-chat" class="p-2">
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa-solid fa-magnifying-glass mx-3" style="color: #d6c9bf;"></i></span>
-                                <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="search" aria-describedby="basic-addon1">
+
+                                <input type="text" 
+                                v-model="chatSearchInput"
+                                @keyUp="SearchChat"
+                                 class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="search" aria-describedby="basic-addon1">
                               </div>
                         </div>
                     </div>
@@ -65,14 +69,13 @@
 
                         <!-- singola chat -->
                         <div v-for="(elem, index) in contacts"
-                        :key="index"
-                        class="position-relative d-flex p-2 border-bottom border-light-subtle">
+                        :key="index" class="position-relative d-flex p-2 border-bottom border-light-subtle"  :class=" elem.visible ? 'd-block' : 'd-none' ">
                             <div class="me-3">
                                 <img :src="elem.avatar" :alt="elem.name" class="round" style="height: 55px;">
                             </div>
-                            <div class="d-flex flex-column">
+                            <div  class="d-flex flex-column">
                                 <span class="fw-bolder">{{elem.name}}</span>
-                                <span class="grey font-14">Ultimo messaggio inviato</span>
+                                <span class="grey font-14">{{elem.messages[elem.messages.length - 1].message}}</span>
                             </div>
                             <div id="time">
                                 <span class="font-11 grey">12:00</span>
@@ -121,12 +124,12 @@
 
                         <div class="d-flex justify-content-start width-100">
                             <div class="width-35">
-                                <div class="position-relative message-style bg-message-received d-flex">
-                                    <span>Hai portato a spasso il cane?</span>
-                                    <div>
-                                        <span class="time-chat font-11 grey">15:30</span>
-                                    </div>
+                                
+                                <div v-for="(elem, index) in contacts" class="position-relative message-style bg-message-received d-flex">
+                                    <span>{{elem[0].messages[0].message}}</span>
+                                    <span class="time-chat font-11 grey">15:30</span>                                    
                                 </div>
+
                             </div>
                         </div>
                         
@@ -138,7 +141,11 @@
                     <div id="new-message">
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-face-smile ms-4 me-3 font-25" style="color: #8f8580;"></i></span>
-                            <input type="text" class="form-control m-2" placeholder="Scrivi un messaggio" aria-label="Username" aria-describedby="basic-addon1">
+
+<!-- @KeyUp.enter="insertMessage" -->
+
+                            <input type="text" v-model="chatTextInput"  class="form-control m-2" placeholder="Scrivi un messaggio" aria-label="Username" aria-describedby="basic-addon1">
+
                             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-microphone ms-3 me-4 font-25" style="color: #8f8580;"></i></span>
                           </div>
                     </div>

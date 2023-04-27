@@ -166,11 +166,30 @@ const { createApp } = Vue
                   }
               ],
           }
-      ]
+      ],
+      chatSearchInput: '',
+      chatTextInput: '',
       }
     },
     methods: {
         //funzioni vue 3
+        SearchChat(){
+
+        // this.contacts.name.toUpperCase()
+
+            this.contacts.forEach(Element => {
+
+                Element.name.toLowerCase()
+
+                if (!Element.name.includes(this.chatSearchInput) && this.chatSearchInput != ''){
+                    Element.visible = false
+                } else {
+                    Element.visible = true
+                }
+            });
+            
+        }
+        
         
     }
   }).mount('#app')
