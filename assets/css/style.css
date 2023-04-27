@@ -82,11 +82,14 @@
     background-image: url(../img/mine.jpg);
     background-repeat: repeat;
     padding: 3rem 4rem 3rem 4rem;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;    
 }
 
 .message-style{
     padding-top: 0.5rem;
-    padding-bottom: 0.7rem;
+    padding-bottom: 0.9rem;
     padding-right: 1rem;
     padding-left: 1rem;
     border-radius: 10px;

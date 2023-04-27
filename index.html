@@ -69,7 +69,9 @@
 
                         <!-- singola chat -->
                         <div v-for="(elem, index) in contacts"
-                        :key="index" class="position-relative d-flex p-2 border-bottom border-light-subtle"  :class=" elem.visible ? 'd-block' : 'd-none' ">
+                        :key="index" 
+                        @click= "(activeChat = index)"
+                        class="position-relative d-flex p-2 border-bottom border-light-subtle"  :class=" elem.visible ? 'd-block' : 'd-none' ">
                             <div class="me-3">
                                 <img :src="elem.avatar" :alt="elem.name" class="round" style="height: 55px;">
                             </div>
@@ -93,10 +95,11 @@
 
                     <!-- barra utente chat aperta -->
                     <div id="user-open-chat" class="d-flex justify-content-between align-items-center p-3">
-                        <div class="d-flex align-items-center">
-                            <img src="assets/img/avatar_1.jpg" alt="" class="round mx-2">
+                        <div v-for="(elem, index) in contacts[activeChat]" 
+                        class="d-flex align-items-center">
+                            <img :src="elem.avatar" alt="" class="round mx-2">
                             <div class="d-flex flex-column">
-                                <span class="fw-bolder font-14">Michele</span>
+                                <span class="fw-bolder font-14">{{elem.name}}</span>
                                 <span class="font-14" style="color: #888888;">Ultimo accesso oggi alle 12:00</span>
                             </div>
                         </div>
@@ -108,34 +111,19 @@
                         </div>
 
                     </div>
+                    
 
                     <!-- chat con messaggi -->
                     <div id="chat">
-                        <div class="d-flex justify-content-end width-100 mb-2">
-                            <div class="width-35">
-                                <div class="position-relative message-style bg-message-sent d-flex">
-                                    <span>Hai portato a spasso il cane?</span>
-                                    <div>
-                                        <span class="time-chat font-11 grey">15:30</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div v-for="(elem, index) in contacts[activeChat].messages"
+                        class="position-relative message-style width-35 mb-1"
+                        :class="(elem.status == 'sent') ? 'bg-message-sent align-self-end' : 'bg-message-received align-self-start'">
+                            
+                            <span>{{elem.message}}</span>
+                            <span class="time-chat font-11 grey">{{elem.date}}</span>                                    
                         </div>
-
-                        <div class="d-flex justify-content-start width-100">
-                            <div class="width-35">
-                                
-                                <div v-for="(elem, index) in contacts" class="position-relative message-style bg-message-received d-flex">
-                                    <span>{{elem[0].messages[0].message}}</span>
-                                    <span class="time-chat font-11 grey">15:30</span>                                    
-                                </div>
-
-                            </div>
-                        </div>
-                        
-                        
-                        
                     </div>
+
 
                     <!-- barra per scrivere un messaggio -->
                     <div id="new-message">

@@ -169,6 +169,7 @@ const { createApp } = Vue
       ],
       chatSearchInput: '',
       chatTextInput: '',
+      activeChat: 0,
       }
     },
     methods: {
