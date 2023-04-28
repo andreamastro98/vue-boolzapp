@@ -181,6 +181,7 @@ const { createApp } = Vue
             this.contacts.forEach(Element => {
 
                 Element.name.toLowerCase()
+                this.chatSearchInput.toLowerCase()
 
                 if (!Element.name.includes(this.chatSearchInput) && this.chatSearchInput != ''){
                     Element.visible = false
@@ -189,8 +190,38 @@ const { createApp } = Vue
                 }
             });
             
-        }
-        
+        },
+
+        insertMessage(){
+            this.contacts[ this.activeChat ].messages.push( {
+
+                date: '10/01/2020 15:51:00',
+                message: this.chatTextInput,
+                status: 'sent',
+
+            })
+
+            this.chatTextInput = ''
+
+            //attivare risposta autmatizzata
+            setTimeout( ()=>{
+
+                this.contacts[ this.activeChat ].messages.push( {
+
+                    date: '10/01/2020 15:51:00',
+                    message: 'ok!',
+                    status: 'received',
+                    })
+
+                }, 2000)
+            },
+            
+            estraiData(i){
+                const arrayDate = this.contacts[ this.activeChat ].messages[i].date.split( '' )
+
+                
+                return arrayDate[1]
+            },
         
     }
   }).mount('#app')

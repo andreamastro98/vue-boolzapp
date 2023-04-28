@@ -95,11 +95,10 @@
 
                     <!-- barra utente chat aperta -->
                     <div id="user-open-chat" class="d-flex justify-content-between align-items-center p-3">
-                        <div v-for="(elem, index) in contacts[activeChat]" 
-                        class="d-flex align-items-center">
-                            <img :src="elem.avatar" alt="" class="round mx-2">
+                        <div class="d-flex align-items-center">
+                            <img :src="contacts[activeChat].avatar" alt="" class="round mx-2">
                             <div class="d-flex flex-column">
-                                <span class="fw-bolder font-14">{{elem.name}}</span>
+                                <span class="fw-bolder font-14">{{ contacts[activeChat].name}}</span>
                                 <span class="font-14" style="color: #888888;">Ultimo accesso oggi alle 12:00</span>
                             </div>
                         </div>
@@ -130,9 +129,10 @@
                         <div class="input-group">
                             <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-face-smile ms-4 me-3 font-25" style="color: #8f8580;"></i></span>
 
-<!-- @KeyUp.enter="insertMessage" -->
-
-                            <input type="text" v-model="chatTextInput"  class="form-control m-2" placeholder="Scrivi un messaggio" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" 
+                            v-model="chatTextInput"
+                            @KeyUp.enter="insertMessage"
+                            class="form-control m-2" placeholder="Scrivi un messaggio" aria-label="Username" aria-describedby="basic-addon1">
 
                             <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-microphone ms-3 me-4 font-25" style="color: #8f8580;"></i></span>
                           </div>
