@@ -176,14 +176,9 @@ const { createApp } = Vue
         //funzioni vue 3
         SearchChat(){
 
-        // this.contacts.name.toUpperCase()
+            this.contacts.forEach(Element => {               
 
-            this.contacts.forEach(Element => {
-
-                Element.name.toLowerCase()
-                this.chatSearchInput.toLowerCase()
-
-                if (!Element.name.includes(this.chatSearchInput) && this.chatSearchInput != ''){
+                if (!Element.name.toLowerCase().includes(this.chatSearchInput.toLowerCase()) && this.chatSearchInput != ''){
                     Element.visible = false
                 } else {
                     Element.visible = true
